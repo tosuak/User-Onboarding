@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from './Components/Form';
+import User from './Components/User'
 import schema from './validation/formSchema';
 import axios from 'axios';
 import * as yup from 'yup';
@@ -73,11 +74,31 @@ function App() {
     getUsers()
   }, [])
 
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues])
+
+
   return (
-    <div className="App">
+    <div className="container">
       <header className="App-header">
-        
-      </header>
+        <h1>Users OnBoard</h1>
+        </header>
+        <Form 
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+          disabled={disabled}
+          errors={formErrors}
+        />
+
+        {
+          user.map(users => {
+            return (
+              <User key={user.id} details={user} />
+            )
+          })
+        }
     </div>
   );
 }
