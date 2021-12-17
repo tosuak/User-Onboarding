@@ -18,7 +18,7 @@ return (
     <form className="form container" onSubmit={onSubmit}>
         <div className="form-group submit">
             <h2>Add a User</h2>
-            <button disabled={disabled}>Submit</button>
+            <button disabled={disabled} id="submitButton">Submit</button>
             <div className="errors">
                 <div>{errors.firstName}</div>
                 <div>{errors.lastName}</div>
